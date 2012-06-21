@@ -1,6 +1,6 @@
 name: iConomy
 main: com.iConomy.iConomy
-version: 5.01
+version: 5.01 Xorked 0.03
 authors: [Nijikokun,ElgarL,Xemos]
 load: startup
 commands:
