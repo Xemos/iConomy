@@ -1,7 +1,7 @@
 name: iConomy
 main: com.iConomy.iConomy
 version: 5.01
-authors: [Nijikokun,ElgarL,Xemos]
+authors: [Nijikokun,ElgarL]
 load: startup
 commands:
     money:
@@ -9,7 +9,7 @@ commands:
         usage: /money
     bank:
         description: Control, list, create, and do various bank features.
-        usage: /iBank
+        usage: /bank
         
 permissions:
     iConomy.admin:
