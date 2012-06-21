@@ -731,6 +731,10 @@ import org.bukkit.event.player.PlayerJoinEvent;
      if (paymentTo != null) {
        to = paymentTo.getName();
      }
+     
+     if(paymentTo.getName().contains("-")){
+    	 paymentFrom.sendMessage("You can not directly pay into a bank account, please visit your local bank.");
+     }else{
  
      Holdings From = iConomy.getAccount(from).getHoldings();
      Holdings To = iConomy.getAccount(to).getHoldings();
@@ -742,29 +746,49 @@ import org.bukkit.event.player.PlayerJoinEvent;
      else if ((amount < 0.0D) || (!From.hasEnough(amount))) {
        if (paymentFrom != null)
          Messaging.send(paymentFrom, this.Template.color("error.funds"));
-     }
-     else {
-       From.subtract(amount);
-       To.add(amount);
- 
-       Double balanceFrom = Double.valueOf(From.balance());
-       Double balanceTo = Double.valueOf(To.balance());
- 
-       iConomy.getTransactions().insert(from, to, balanceFrom.doubleValue(), balanceTo.doubleValue(), 0.0D, 0.0D, amount);
-       iConomy.getTransactions().insert(to, from, balanceTo.doubleValue(), balanceFrom.doubleValue(), 0.0D, amount, 0.0D);
- 
-       if (paymentFrom != null) {
-         Messaging.send(paymentFrom, this.Template.color("tag.money") + this.Template.parse("payment.to", new String[] { "+name,+n", "+amount,+a" }, new String[] { to, iConomy.format(amount) }));
- 
-         showBalance(from, paymentFrom, true);
-       }
- 
-       if (paymentTo != null) {
-         Messaging.send(paymentTo, this.Template.color("tag.money") + this.Template.parse("payment.from", new String[] { "+name,+n", "+amount,+a" }, new String[] { from, iConomy.format(amount) }));
- 
-         showBalance(to, paymentTo, true);
-       }
-     }
+			} else {
+				From.subtract(amount);
+				To.add(amount);
+
+				Double balanceFrom = Double.valueOf(From.balance());
+				Double balanceTo = Double.valueOf(To.balance());
+
+				iConomy.getTransactions().insert(from, to,
+						balanceFrom.doubleValue(), balanceTo.doubleValue(),
+						0.0D, 0.0D, amount);
+				iConomy.getTransactions().insert(to, from,
+						balanceTo.doubleValue(), balanceFrom.doubleValue(),
+						0.0D, amount, 0.0D);
+
+				if (paymentFrom != null) {
+					Messaging.send(
+							paymentFrom,
+							this.Template.color("tag.money")
+									+ this.Template.parse(
+											"payment.to",
+											new String[] { "+name,+n",
+													"+amount,+a" },
+											new String[] { to,
+													iConomy.format(amount) }));
+
+					showBalance(from, paymentFrom, true);
+				}
+
+				if (paymentTo != null) {
+					Messaging.send(
+							paymentTo,
+							this.Template.color("tag.money")
+									+ this.Template.parse(
+											"payment.from",
+											new String[] { "+name,+n",
+													"+amount,+a" },
+											new String[] { from,
+													iConomy.format(amount) }));
+
+					showBalance(to, paymentTo, true);
+				}
+			}
+		}
    }
  
    public void showReset(String account, Player controller, boolean console)
