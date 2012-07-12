@@ -1,7 +1,6 @@
 package com.iConomy.util;
 
 import com.iConomy.iConomy;
-import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
@@ -27,28 +26,44 @@ public class Messaging
   public static String parse(String original)
   {
     original = colorize(original);
-    return original.replaceAll("(&([a-z0-9]))", "ยง$2").replace("&&", "&");
+    return original.replaceAll("(&([a-z0-9]))", "ง$2").replace("&&", "&");
   }
 
   public static String colorize(String original)
   {
-    original = original.replace("`r", ChatColor.RED.toString());
-    original = original.replace("`R", ChatColor.DARK_RED.toString());
-    original = original.replace("`y", ChatColor.YELLOW.toString());
-    original = original.replace("`Y", ChatColor.GOLD.toString());
-    original = original.replace("`g", ChatColor.GREEN.toString());
-    original = original.replace("`G", ChatColor.DARK_GREEN.toString());
-    original = original.replace("`a", ChatColor.AQUA.toString());
-    original = original.replace("`A", ChatColor.DARK_AQUA.toString());
-    original = original.replace("`b", ChatColor.BLUE.toString());
-    original = original.replace("`B", ChatColor.DARK_BLUE.toString());
-    original = original.replace("`p", ChatColor.LIGHT_PURPLE.toString());
-    original = original.replace("`P", ChatColor.DARK_PURPLE.toString());
-    original = original.replace("`k", ChatColor.BLACK.toString());
-    original = original.replace("`s", ChatColor.GRAY.toString());
-    original = original.replace("`S", ChatColor.DARK_GRAY.toString());
-    original = original.replace("`w", ChatColor.WHITE.toString());
-    return original.replace("<black>", "ยง0").replace("<navy>", "ยง1").replace("<green>", "ยง2").replace("<teal>", "ยง3").replace("<red>", "ยง4").replace("<purple>", "ยง5").replace("<gold>", "ยง6").replace("<silver>", "ยง7").replace("<gray>", "ยง8").replace("<blue>", "ยง9").replace("<lime>", "ยงa").replace("<aqua>", "ยงb").replace("<rose>", "ยงc").replace("<pink>", "ยงd").replace("<yellow>", "ยงe").replace("<white>", "ยงf");
+    original = original.replace("`r", "งc");
+    original = original.replace("`R", "ง4");
+    original = original.replace("`y", "งe");
+    original = original.replace("`Y", "ง6");
+    original = original.replace("`g", "งa");
+    original = original.replace("`G", "ง2");
+    original = original.replace("`a", "งb");
+    original = original.replace("`A", "ง3");
+    original = original.replace("`b", "ง9");
+    original = original.replace("`B", "ง1");
+    original = original.replace("`p", "งd");
+    original = original.replace("`P", "ง5");
+    original = original.replace("`k", "ง0");
+    original = original.replace("`s", "ง7");
+    original = original.replace("`S", "ง8");
+    original = original.replace("`w", "งf");
+
+    return original.replace("<black>", "ง0")
+      .replace("<navy>", "ง1")
+      .replace("<green>", "ง2")
+      .replace("<teal>", "ง3")
+      .replace("<red>", "ง4")
+      .replace("<purple>", "ง5")
+      .replace("<gold>", "ง6")
+      .replace("<silver>", "ง7")
+      .replace("<gray>", "ง8")
+      .replace("<blue>", "ง9")
+      .replace("<lime>", "งa")
+      .replace("<aqua>", "งb")
+      .replace("<rose>", "งc")
+      .replace("<pink>", "งd")
+      .replace("<yellow>", "งe")
+      .replace("<white>", "งf");
   }
 
   public static String bracketize(String message)

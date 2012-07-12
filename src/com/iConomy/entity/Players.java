@@ -732,7 +732,7 @@ import org.bukkit.event.player.PlayerJoinEvent;
        to = paymentTo.getName();
      }
      
-     if(paymentTo.getName().contains("-")){
+     if(to.contains("-")){
     	 paymentFrom.sendMessage("You can not directly pay into a bank account, please visit your local bank.");
      }else{
  
